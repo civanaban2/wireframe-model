@@ -1,7 +1,7 @@
 NAME = fdf
 
 NAME_LIBFT = ft
-NAME_MINILIBX = mlx
+NAME_MINILIBX = mlx_Linux
 
 DIR_BUILD = build
 DIR_SRC = src
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = $(DIR_SRC)/fdf.c
 
 INCLUDES_H = -I$(DIR_INC) -I$(DIR_LIBFT) -I$(DIR_MINILIBX)
-INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX)
+INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX) -lm -lXext -lX11
 
 OBJ = $(SRC:.c=.o)
 
