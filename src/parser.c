@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 02:49:59 by cari              #+#    #+#             */
-/*   Updated: 2025/03/18 00:24:26 by cari             ###   ########.fr       */
+/*   Created: 2025/03/17 21:48:13 by cari              #+#    #+#             */
+/*   Updated: 2025/03/18 01:19:59 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char const *argv[])
+void	parse_map(int fd, t_core *core)
 {
-	t_core core	;
-
-	arg_check(argc, argv, &core);
+	char	*line;
 	
-	return 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		
+	}
+	
 }
 
+void	read_map(int fd, t_core *core)
+{
+	
+}
