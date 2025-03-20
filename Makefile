@@ -10,9 +10,14 @@ DIR_LIBFT = lib/libft
 DIR_MINILIBX = lib/minilibx
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = $(DIR_SRC)/fdf.c
+SRC = $(DIR_SRC)/fdf.c \
+	$(DIR_SRC)/draw_map.c \
+	$(DIR_SRC)/error.c \
+	$(DIR_SRC)/parser.c \
+	$(DIR_SRC)/hooks.c \
+	$(DIR_SRC)/rotation_matrix.c \
 
 INCLUDES_H = -I$(DIR_INC) -I$(DIR_LIBFT) -I$(DIR_MINILIBX)
 INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX) -lm -lXext -lX11
