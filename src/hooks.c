@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:38:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 01:04:31 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/21 02:29:49 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	key_press(int keycode, t_core *core)
 	else if (keycode == XK_Right)
 		core->camera.x_trans += 100;
 	else if (keycode == XK_j || keycode == XK_J)
-		core->camera.z_scale += 1;
+		core->camera.z_scale += 0.01;
 	else if (keycode == XK_l || keycode == XK_L)
-		core->camera.z_scale -= 1;
+		core->camera.z_scale -= 0.01;
 	else if (keycode == XK_z || keycode == XK_Z)
 		core->camera.zoom += 0.5;
 	else if (keycode == XK_x || keycode == XK_X)
