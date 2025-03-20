@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 21:48:13 by cari              #+#    #+#             */
-/*   Updated: 2025/03/20 20:26:41 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/21 01:11:31 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	parse_map(char const *filename, t_map *map)
 {
-	int 	i;
+	int	i;
 
 	map->height = line_counter(filename);
 	map->width = index_counter(filename);
@@ -27,9 +27,9 @@ void	parse_map(char const *filename, t_map *map)
 
 int	line_counter(char const *filename)
 {
-	int	fd;
-	char *line;
-	int count;
+	int		fd;
+	char	*line;
+	int		count;
 
 	fd = open(filename, O_RDONLY);
 	count = 0;
@@ -49,12 +49,11 @@ int	index_counter(char const *filename)
 	int		fd;
 	int		count;
 	char	*line;
-	char 	**split;
+	char	**split;
 
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
 	split = ft_split(line, ' ');
-	
 	count = 0;
 	while (split[count])
 		count++;
@@ -90,15 +89,5 @@ void	get_data(char const *filename, t_map *map)
 		free(line);
 		free_split(split);
 	}
-}
-
-void	free_split(char **split)
-{
-	char **tmp;
-
-	tmp = split;
-	while (*split)
-		free(*split++);
-	free(*split);
-	free(tmp);
+	close(fd);
 }
