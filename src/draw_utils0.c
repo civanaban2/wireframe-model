@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_utils0.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 23:44:31 by cari              #+#    #+#             */
+/*   Updated: 2025/03/20 23:44:35 by cari             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
@@ -19,4 +31,3 @@ int	point_control(double x, double y, int x_offset, int y_offset)
 		return (1);
 	return (0);
 }
-

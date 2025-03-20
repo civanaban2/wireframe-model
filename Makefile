@@ -14,10 +14,13 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = $(DIR_SRC)/fdf.c \
 	$(DIR_SRC)/draw_map.c \
+	$(DIR_SRC)/draw_utils0.c \
+	$(DIR_SRC)/draw_utils1.c \
 	$(DIR_SRC)/error.c \
 	$(DIR_SRC)/parser.c \
 	$(DIR_SRC)/hooks.c \
 	$(DIR_SRC)/rotation_matrix.c \
+	$(DIR_SRC)/free_stuff.c
 
 INCLUDES_H = -I$(DIR_INC) -I$(DIR_LIBFT) -I$(DIR_MINILIBX)
 INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX) -lm -lXext -lX11

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 23:43:29 by cari              #+#    #+#             */
-/*   Updated: 2025/03/20 23:43:53 by cari             ###   ########.fr       */
+/*   Created: 2025/03/20 23:41:09 by cari              #+#    #+#             */
+/*   Updated: 2025/03/21 01:08:36 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_error(char *message)
+void	free_split(char **split)
 {
-	ft_printf("%s", message);
-	exit(1);
+	char	**tmp;
+
+	tmp = split;
+	while (*split)
+		free(*split++);
+	free(*split);
+	free(tmp);
 }
 
-void	arg_check(int argc, char const *filename)
+void	free_points (t_point **points, int height)
 {
-	int	fd;
+	int	i;
 
-	if (argc != 2)
-		ft_error(INVALID_ARGS);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		ft_error(INVALID_FILE);
-	close(fd);
+	i = 0;
+	while (i < height)
+		free(points[i++]);
+	free(points);
 }
