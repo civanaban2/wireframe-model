@@ -73,7 +73,7 @@ void	draw_line(t_core core, t_point point1, t_point point2)
 	while (current_x < point2.x * sign)
 	{
 		if (point_control((int) current_x, (int) current_y, 1920, 1080))
-			my_mlx_pixel_put(&core.img, (int) current_x, (int) current_y, 0xFFFFFF);
+			my_mlx_pixel_put(&core.img, (int) current_x, (int) current_y, 0x00FFFF);
 		current_x += 1;
 		current_y += step;
 	}
@@ -99,30 +99,4 @@ void	draw_lines(t_core core)
 		}
 		x++;
 	}
-}
-
-t_point	get_center(t_core core)
-{
-	int x;
-	int y;
-	t_point center;
-
-	center.x = 0;
-	center.y = 0;
-
-	y = 0;
-	while (y < core.map.height)
-	{
-		x = 0;
-		while (x < core.map.width)
-		{
-			center.x += core.map.points[y][x].x;
-			center.y += core.map.points[y][x].y;
-			x++;
-		}
-		y++;
-	}
-	center.x /= core.map.width;
-	center.y /= core.map.height;
-	return (center);
 }
