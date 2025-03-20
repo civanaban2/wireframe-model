@@ -1,23 +1,18 @@
 #include "fdf.h"
 
-void	ft_error(char *message, t_core *core)
+void	ft_error(char *message)
 {
-	free_data(core);
 	ft_printf("%s", message);
 	exit(1);
 }
 
-void	free_data(t_core *core)
+void	arg_check(int argc, char const *filename)
 {
-
-}
-
-void	arg_check(int argc, char const *argv[], t_core *core)
-{
+	int fd;
 	if (argc != 2)
-		ft_error(INVALID_ARGS, core);
-	core->fd = open(argv[1], O_RDONLY);
-	if (core->fd == -1)
-		ft_error(INVALID_FILE, core);
-	parse_map(fd, core);
+		ft_error(INVALID_ARGS);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		ft_error(INVALID_FILE);
+	close(fd);
 }
