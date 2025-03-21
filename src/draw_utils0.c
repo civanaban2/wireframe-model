@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:44:31 by cari              #+#    #+#             */
-/*   Updated: 2025/03/20 23:44:35 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/21 20:18:48 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	reset_map(char *img_addr, int width, int height)
 	ft_memset(img_addr, 0, width * height * 4);
 }
 
-int	point_control(double x, double y, int x_offset, int y_offset)
+int	point_control(float x, float y, int x_offset, int y_offset)
 {
 	if (x < x_offset && x > 0 && y < y_offset && y > 0)
 		return (1);
