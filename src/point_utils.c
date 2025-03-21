@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:13:24 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 20:54:17 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/22 02:10:31 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ void	draw_line(t_core core, t_point point1, t_point point2)
 
 	for (i = 0; i <= steps; i++)
 	{
-		if (point_control((int)current_x, (int)current_y, WIDTH, HEIGHT))
-			my_mlx_pixel_put(&core.img, (int)current_x, (int)current_y, 0x00FFFF);
+		my_mlx_pixel_put(&core.img, (int)current_x, (int)current_y, 0xFFFFFF);
 		current_x += x_inc;
 		current_y += y_inc;
 	}
@@ -76,16 +75,10 @@ t_point get_point(t_core core, int x, int y)
 {
 	t_point point;
 
-	double scale_X = (double) WIDTH / (core.map.width -1) -1;
-	double scale_Y = (double) HEIGHT / (core.map.height -1) -1;
-
-	if (scale_X > scale_Y)
-		scale_X = scale_Y;
-	else
-		scale_Y = scale_X;
-	point.x = core.map.points[y][x].x * scale_X * core.camera.zoom ;
-	point.y = core.map.points[y][x].y * scale_Y * core.camera.zoom ;
-	point.z = core.map.points[y][x].z * scale_X * core.camera.z_scale * core.camera.zoom;
+	
+	point.x = core.map.points[y][x].x * core.camera.zoom ;
+	point.y = core.map.points[y][x].y * core.camera.zoom ;
+	point.z = core.map.points[y][x].z * core.camera.z_scale * core.camera.zoom;
 	return (point);
 }
 
