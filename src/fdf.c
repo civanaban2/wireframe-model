@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:59 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 20:40:06 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/22 02:08:46 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,9 @@ int	main(int argc, char const *argv[])
 	draw_map(core);
 	mlx_put_image_to_window(core.screen.mlx,
 		core.screen.win, core.img.img, 0, 0);
-	mlx_hook(core.screen.win, 2, 1L << 0, key_press, &core);
+	mlx_hook(core.screen.win, 2, 1L << 0,  key_press, &core);
 	mlx_hook(core.screen.win, 17, 0, close_window, &core);
 	mlx_loop(core.screen.mlx);
-	mlx_destroy_image(core.screen.mlx, core.img.img);
-	mlx_destroy_window(core.screen.mlx, core.screen.win);
-	mlx_destroy_display(core.screen.mlx);
-	free_points(core.map.points, core.map.height);
 	return (0);
 }
 
@@ -44,7 +40,7 @@ void	init_core(t_core *core)
 	core->camera.x_trans = 0;
 	core->camera.y_trans = 0;
 	core->camera.z_scale = 1;
-	core->camera.x_rotation = 0;
-	core->camera.y_rotation = 0;
+	core->camera.x_rotation = -M_PI / 180 * 35;
+	core->camera.y_rotation = M_PI / 180 * 45;
 	core->camera.z_rotation = 0;
 }
