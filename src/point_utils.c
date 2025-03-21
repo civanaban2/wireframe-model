@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:13:24 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 20:23:14 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/21 20:54:17 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	draw_line(t_core core, t_point point1, t_point point2)
 	x_inc = delta_x / steps;
 	y_inc = delta_y / steps;
 
-	point1.x += core.camera.x_trans;
-	point1.y += core.camera.y_trans;
-	point2.x += core.camera.x_trans;
-	point2.y += core.camera.y_trans;
+	point1.x += core.camera.x_trans + WIDTH / 2;
+	point1.y += core.camera.y_trans + HEIGHT / 2;
+	point2.x += core.camera.x_trans + WIDTH / 2;
+	point2.y += core.camera.y_trans + HEIGHT / 2;
 
 	current_x = point1.x;
 	current_y = point1.y;
@@ -83,9 +83,9 @@ t_point get_point(t_core core, int x, int y)
 		scale_X = scale_Y;
 	else
 		scale_Y = scale_X;
-	point.x = core.map.points[y][x].x * scale_X * core.camera.zoom;
-	point.y = core.map.points[y][x].y * scale_Y * core.camera.zoom;
-	point.z = core.map.points[y][x].z * core.camera.z_scale * core.camera.zoom;
+	point.x = core.map.points[y][x].x * scale_X * core.camera.zoom ;
+	point.y = core.map.points[y][x].y * scale_Y * core.camera.zoom ;
+	point.z = core.map.points[y][x].z * scale_X * core.camera.z_scale * core.camera.zoom;
 	return (point);
 }
 

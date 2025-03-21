@@ -14,7 +14,6 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = $(DIR_SRC)/fdf.c \
 	$(DIR_SRC)/draw_map.c \
-	$(DIR_SRC)/draw_utils0.c \
 	$(DIR_SRC)/error.c \
 	$(DIR_SRC)/parser.c \
 	$(DIR_SRC)/hooks.c \
