@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 01:09:06 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/21 20:36:54 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ typedef struct s_img
 
 typedef struct s_camera
 {
-	double	x_trans;
-	double	y_trans;
-	double	zoom;
-	double	z_scale;
-	double	x_rotation;
-	double	y_rotation;
-	double	z_rotation;
+	float	x_trans;
+	float	y_trans;
+	float	zoom;
+	float	z_scale;
+	float	x_rotation;
+	float	y_rotation;
+	float	z_rotation;
 }	t_camera;
 
 typedef struct s_point
 {
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 	int		color;
 }	t_point;
 
@@ -86,9 +86,9 @@ void	parse_map(char const *filename, t_map *map);
 void	arg_check(int argc, char const *filename);
 void	draw_map(t_core core);
 t_point	rotate(t_point point, t_camera camera);
-t_point	rotate_x(t_point point, double angle);
-t_point	rotate_y(t_point point, double angle);
-t_point	rotate_z(t_point point, double angle);
+t_point	rotate_x(t_point point, float angle);
+t_point	rotate_y(t_point point, float angle);
+t_point	rotate_z(t_point point, float angle);
 void	parse_map(char const *filename, t_map *map);
 int		line_counter(char const *filename);
 int		index_counter(char const *filename);
@@ -96,7 +96,7 @@ void	get_data(char const *filename, t_map *map);
 void	free_split(char **split);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	reset_map(char *img_addr, int width, int height);
-int		point_control(double x, double y, int x_offset, int y_offset);
+int		point_control(float x, float y, int x_offset, int y_offset);
 t_point	get_point(t_core core, int x, int y);
 void	draw_point(t_core core, int x, int y);
 void	draw_points(t_core core);
@@ -107,5 +107,10 @@ void	free_split(char **split);
 void	init_core(t_core *core);
 t_point	get_center(t_core core);
 void	free_points (t_point **points, int height);
+t_point	apply_transformations(t_point point, t_core core);
+void	draw_line_recursive(t_img *img, float x, float y, float x_inc, float y_inc, float steps);
+int	rotation_hooks(t_core *core, int keycode);
+int	translation_hooks(t_core *core, int keycode);
+int	zoom_hooks(t_core *core, int keycode);
 
 #endif
