@@ -19,7 +19,10 @@ SRC = $(DIR_SRC)/fdf.c \
 	$(DIR_SRC)/hooks.c \
 	$(DIR_SRC)/rotation_matrix.c \
 	$(DIR_SRC)/free_stuff.c \
-	$(DIR_SRC)/point_utils.c \
+	$(DIR_SRC)/line_utils.c \
+	$(DIR_SRC)/hooks_core.c \
+	$(DIR_SRC)/hooks_view.c \
+	$(DIR_SRC)/colorize.c
 
 INCLUDES_H = -I$(DIR_INC) -I$(DIR_LIBFT) -I$(DIR_MINILIBX)
 INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX) -lm -lXext -lX11
