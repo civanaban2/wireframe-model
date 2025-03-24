@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 21:48:13 by cari              #+#    #+#             */
-/*   Updated: 2025/03/22 00:47:21 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/24 18:38:18 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	get_data(char const *filename, t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			map->points[i][j].x = j - map->width / 2;
-			map->points[i][j].y = i - map->height / 2;
+			map->points[i][j].x = 50 * (j - map->width / 2);
+			map->points[i][j].y = 50 * (i - map->height / 2);
 			map->points[i][j].z = ft_atoi(split[j]);
 			j++;
 		}
