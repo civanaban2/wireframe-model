@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_core.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/25 06:53:58 by cari              #+#    #+#             */
+/*   Updated: 2025/03/25 06:54:09 by cari             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void reset_hook(t_core *core, int keycode)
+void	reset_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_r || keycode == XK_R)
 	{
@@ -14,13 +26,13 @@ void reset_hook(t_core *core, int keycode)
 	}
 }
 
-void close_hook(t_core *core, int keycode)
+void	close_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_Escape)
 		close_window(core);
 }
 
-int close_window(t_core *core)
+int	close_window(t_core *core)
 {
 	free_points(core->map.points, core->map.height);
 	mlx_destroy_image(core->screen.mlx, core->img.img);
@@ -30,7 +42,7 @@ int close_window(t_core *core)
 	exit(0);
 }
 
-int key_control(int keycode)
+int	key_control(int keycode)
 {
 	if (keycode == XK_A || keycode == XK_a || keycode == XK_D || keycode == XK_d)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:44:10 by cari              #+#    #+#             */
-/*   Updated: 2025/03/24 19:28:33 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 06:51:24 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_map(t_core core)
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
-	
+
 	if (!(x < WIDTH && x > 0 && y < HEIGHT && y > 0))
 		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));

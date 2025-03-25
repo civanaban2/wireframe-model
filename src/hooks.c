@@ -6,13 +6,13 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:38:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/24 22:48:01 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 06:52:19 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int key_press(int keycode, t_core *core)
+int	key_press(int keycode, t_core *core)
 {
 	if (key_control(keycode))
 	{
@@ -29,4 +29,3 @@ int key_press(int keycode, t_core *core)
 	draw_map(*core);
 	return (0);
 }
-

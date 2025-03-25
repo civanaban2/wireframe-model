@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:41:09 by cari              #+#    #+#             */
-/*   Updated: 2025/03/21 01:08:36 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 06:52:07 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_split(char **split)
 	free(tmp);
 }
 
-void	free_points (t_point **points, int height)
+void	free_points(t_point **points, int height)
 {
 	int	i;
 
