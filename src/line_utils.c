@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:13:24 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 01:00:17 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 04:41:27 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,38 @@ void draw_lines(t_core core)
 
 void draw_line(t_core core, t_point point1, t_point point2)
 {
-	double delta_x;
-	double delta_y;
-	double steps;
-	double x_inc;
-	double y_inc;
-	double current_x;
-	double current_y;
+	float delta_x;
+	float delta_y;
+	float hippo;
+	float step;
+	float r_step;
+	float g_step;
+	float b_step;
 	int color;
 	int i;
 
+	i = 0;
 	delta_x = point2.x - point1.x;
 	delta_y = point2.y - point1.y;
 
-	steps = fabs(delta_x) > fabs(delta_y) ? fabs(delta_x) : fabs(delta_y);
-
-	x_inc = delta_x / steps;
-	y_inc = delta_y / steps;
-
-	current_x = point1.x;
-	current_y = point1.y;
-
-	for (i = 0; i <= steps; i++)
+	hippo = sqrtf(delta_x * delta_x + delta_y * delta_y);
+	step = fmax(fabs(delta_x), fabs(delta_y));	
+	r_step = (float) (point2.color.r - point1.color.r) / hippo;
+	g_step = (float) (point2.color.g - point1.color.g) / hippo;
+	b_step = (float) (point2.color.b - point1.color.b) / hippo;
+	color = point1.color.val;
+	while (hippo-- > 0)
 	{
-		color = get_color(point1.color, point2.color, i, steps);
-		my_mlx_pixel_put(&core.img, (int)current_x, (int)current_y, color);
-		current_x += x_inc;
-		current_y += y_inc;
-	}
+		my_mlx_pixel_put(&core.img, (int)point1.x, (int)point1.y, point1.color.val);
+		if (point1.x != point2.x)
+			point1.x += delta_x / step;
+		if (point1.y != point2.y)
+			point1.y += delta_y / step;
+		point1.color.r += r_step;
+		point1.color.g += g_step;
+		point1.color.b += b_step;
+		i++;
+	}	
 }
 
 t_point get_point(t_core core, int x, int y)
@@ -77,8 +81,6 @@ t_point get_point(t_core core, int x, int y)
 	point.z = core.map.points[y][x].z * core.camera.z_scale;
 	point = colorize(point, core.camera.color_mode);
 	point.z *= core.camera.zoom;
-	if (core.camera.isSphere)
-		make_it_sphere(&point, core.map.width * 50, core.map.height * 50, core.camera.zoom);
 	point = rotate(point, core.camera);
 	point.x += core.camera.x_trans + WIDTH / 2;
 	point.y += core.camera.y_trans + HEIGHT / 2;
@@ -105,16 +107,4 @@ t_point **get_points(t_core core)
 		y++;
 	}
 	return (points);
-}
-
-void	make_it_sphere(t_point *points, int width, int height, float zoom)
-{
-	float lng;
-	float lat;
-
-	lng = (points->x / (float)(width - 50.0 * zoom)) * 2 * M_PI - M_PI; 
-	lat = (points->y / (float)(height - 50.0 * zoom)) * M_PI - (M_PI / 2);
-	points->x = cos(lat) * cos(lng) * points->z;  // Yeni X
-    points->y = cos(lat) * sin(lng) * points->z;  // Yeni Y
-    points->z = sin(lat) * points->z;   
 }

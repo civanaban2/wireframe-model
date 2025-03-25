@@ -10,17 +10,17 @@ t_point colorize(t_point point, int mode)
 	{
 		if (point.z < 0)
 			point.color.val = 0x0000FF;
-		else if (point.z < 10)
-			point.color.val = 0x00FF00;
-		else if (point.z < 25)
-			point.color.val = 0xADFF2F;
-		else if (point.z < 50)
-			point.color.val = 0xFFFF00;
 		else if (point.z < 100)
-			point.color.val = 0xFFA500;
-		else if (point.z < 150)
-			point.color.val = 0x8B4513;
+			point.color.val = 0x00FF00;
 		else if (point.z < 250)
+			point.color.val = 0xADFF2F;
+		else if (point.z < 500)
+			point.color.val = 0xFFFF00;
+		else if (point.z < 1000)
+			point.color.val = 0xFFA500;
+		else if (point.z < 1500)
+			point.color.val = 0x8B4513;
+		else if (point.z < 2500)
 			point.color.val = 0x654321;
 		else
 			point.color.val = 0xFFFFFF;
@@ -44,23 +44,28 @@ t_point colorize(t_point point, int mode)
 		else
 			point.color.val = 0xC0C0C0;
 	}
+	else if (mode == 4)
+	{
+		if (point.z < 0)
+			point.color.val = 0x0000FF;
+		else if (point.z < 10)
+			point.color.val = 0x00FF00;
+		else if (point.z < 25)
+			point.color.val = 0xFF00;
+		else
+			point.color.val = 0xFFFFFF;		
+	}
 	return (point);
 }
 
 int	get_color(t_color color1, t_color color2, int i, int steps)
 {
 	t_color	color;
-	int		r;
-	int		g;
-	int		b;
 
 	if (steps == 0)
 		return (color1.val);
 	color.r = color1.r + (color2.r - color1.r) * i / steps;
 	color.g = color1.g + (color2.g - color1.g) * i / steps;
 	color.b = color1.b + (color2.b - color1.b) * i / steps;
-	r = color.r;
-	g = color.g;
-	b = color.b;
 	return (color.val);
 }
