@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 04:42:07 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 05:49:50 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ typedef union u_color
 {
 	struct
 	{
-		char	r;
-		char	g;
-		char	b;
+		__uint8_t	r;
+		__uint8_t	g;
+		__uint8_t	b;
 	};
-	unsigned int	val;
+	__uint32_t	val;
 }	t_color;
 
 typedef struct s_point

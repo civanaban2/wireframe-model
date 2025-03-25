@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:59 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 04:33:22 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 06:51:38 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char const *argv[])
 	parse_map(argv[1], &core.map);
 	init_core(&core);
 	draw_map(core);
-	mlx_hook(core.screen.win, 2, 1L << 0,  key_press, &core);
+	mlx_hook(core.screen.win, 2, 1L << 0, key_press, &core);
 	mlx_hook(core.screen.win, 17, 0, close_window, &core);
 	mlx_loop(core.screen.mlx);
 	return (0);

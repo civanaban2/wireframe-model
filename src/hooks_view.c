@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_view.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/25 06:54:29 by cari              #+#    #+#             */
+/*   Updated: 2025/03/25 06:56:21 by cari             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void zoom_hook(t_core *core, int keycode)
+void	zoom_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_u || keycode == XK_U)
 		core->camera.z_scale += 0.05;
@@ -15,12 +27,12 @@ void zoom_hook(t_core *core, int keycode)
 	else if (keycode == XK_x || keycode == XK_X)
 		core->camera.zoom -= 0.05;
 	if (core->camera.z_scale < 0.0)
-			core->camera.z_scale = 0.0;
+		core->camera.z_scale = 0.0;
 	if (core->camera.zoom < 0.0)
-			core->camera.zoom = 0.0;
+		core->camera.zoom = 0.0;
 }
 
-void rotation_hook(t_core *core, int keycode)
+void	rotation_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_w || keycode == XK_W)
 		core->camera.y_rotation += M_PI / 180 * 10;
@@ -36,19 +48,19 @@ void rotation_hook(t_core *core, int keycode)
 		core->camera.z_rotation += M_PI / 180 * 10;
 	if (core->camera.x_rotation > 2 * M_PI - 0.1)
 		core->camera.x_rotation = 0;
-	if (core->camera.x_rotation < - 2 * M_PI + 0.1)
+	if (core->camera.x_rotation < -2 * M_PI + 0.1)
 		core->camera.x_rotation = 0;
 	if (core->camera.y_rotation > 2 * M_PI - 0.1)
 		core->camera.y_rotation = 0;
-	if (core->camera.y_rotation < - 2 * M_PI + 0.1) 
+	if (core->camera.y_rotation < -2 * M_PI + 0.1)
 		core->camera.y_rotation = 0;
 	if (core->camera.z_rotation > 2 * M_PI - 0.1)
 		core->camera.z_rotation = 0;
-	if (core->camera.z_rotation < - 2 * M_PI + 0.1)
+	if (core->camera.z_rotation < -2 * M_PI + 0.1)
 		core->camera.z_rotation = 0;
 }
 
-void translation_hook(t_core *core, int keycode)
+void	translation_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_Up)
 		core->camera.y_trans -= 10;
@@ -60,7 +72,7 @@ void translation_hook(t_core *core, int keycode)
 		core->camera.x_trans += 10;
 }
 
-void color_hook(t_core *core, int keycode)
+void	color_hook(t_core *core, int keycode)
 {
 	if (keycode == XK_1)
 		core->camera.color_mode = 1;

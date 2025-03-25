@@ -6,17 +6,17 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:13:24 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 04:41:27 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 06:58:07 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void draw_lines(t_core core)
+void	draw_lines(t_core core)
 {
-	int x;
-	int y;
-	t_point **points;
+	int		x;
+	int		y;
+	t_point	**points;
 
 	points = get_points(core);
 	x = 0;
@@ -36,35 +36,30 @@ void draw_lines(t_core core)
 	free_points(points, core.map.height);
 }
 
-void draw_line(t_core core, t_point point1, t_point point2)
+void	draw_line(t_core core, t_point point1, t_point point2)
 {
-	float delta_x;
-	float delta_y;
-	float hippo;
-	float step;
-	float r_step;
-	float g_step;
-	float b_step;
-	int color;
-	int i;
+	float		x_step;
+	float		y_step;
+	float		step;
+	__uint8_t	r_step;
+	__uint8_t	g_step;
+	__uint8_t	b_step;
+	int			i;
 
 	i = 0;
-	delta_x = point2.x - point1.x;
-	delta_y = point2.y - point1.y;
-
-	hippo = sqrtf(delta_x * delta_x + delta_y * delta_y);
-	step = fmax(fabs(delta_x), fabs(delta_y));	
-	r_step = (float) (point2.color.r - point1.color.r) / hippo;
-	g_step = (float) (point2.color.g - point1.color.g) / hippo;
-	b_step = (float) (point2.color.b - point1.color.b) / hippo;
-	color = point1.color.val;
-	while (hippo-- > 0)
+	x_step = (int) point2.x - point1.x;
+	y_step = (int) point2.y - point1.y;
+	step = fmaxf(fabsf(x_step), fabsf(y_step));	
+	r_step = (point2.color.r - point1.color.r) / step;
+	g_step = (point2.color.g - point1.color.g) / step;
+	b_step = (point2.color.b - point1.color.b) / step;
+	x_step = (point2.x - point1.x) / step;
+	y_step = (point2.y - point1.y) / step;
+	while (i <= step)
 	{
 		my_mlx_pixel_put(&core.img, (int)point1.x, (int)point1.y, point1.color.val);
-		if (point1.x != point2.x)
-			point1.x += delta_x / step;
-		if (point1.y != point2.y)
-			point1.y += delta_y / step;
+		point1.x += x_step;
+		point1.y += y_step;
 		point1.color.r += r_step;
 		point1.color.g += g_step;
 		point1.color.b += b_step;
@@ -72,9 +67,9 @@ void draw_line(t_core core, t_point point1, t_point point2)
 	}	
 }
 
-t_point get_point(t_core core, int x, int y)
+t_point	get_point(t_core core, int x, int y)
 {
-	t_point point;
+	t_point	point;
 
 	point.x = core.map.points[y][x].x * core.camera.zoom;
 	point.y = core.map.points[y][x].y * core.camera.zoom;
@@ -87,11 +82,11 @@ t_point get_point(t_core core, int x, int y)
 	return (point);
 }
 
-t_point **get_points(t_core core)
+t_point	**get_points(t_core core)
 {
-	t_point **points;
-	int x;
-	int y;
+	t_point	**points;
+	int		x;
+	int		y;
 
 	points = (t_point **)malloc(sizeof(t_point *) * core.map.height);
 	y = 0;
