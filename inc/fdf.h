@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 00:56:01 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/25 04:42:07 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ typedef struct s_map
 {
 	t_point	**points;
 	int		width;
-	int		height;	
+	int		height;
+	float	z_min;
+	float	z_max;
 }	t_map;
 
 typedef struct s_core
@@ -122,6 +124,6 @@ t_point colorize(t_point point, int mode);
 int	get_color(t_color color1, t_color color2, int i, int steps);
 void color_hook(t_core *core, int keycode);
 void	angle_hook(t_core *core, int keycode);
-void	make_it_sphere(t_point *points, int width, int height, float zoom);
+void	make_it_sphere(t_point *points, int width, int height);
 
 #endif
