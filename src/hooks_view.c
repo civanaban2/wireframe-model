@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 06:54:29 by cari              #+#    #+#             */
-/*   Updated: 2025/03/27 03:08:13 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/27 05:07:50 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	zoom_hook(t_core *core, int keycode)
 		core->camera.zoom /= 1.1;
 	if (core->camera.z_scale < 0.0)
 		core->camera.z_scale = 0.0;
-	else if (core->camera.z_scale > 20)
-		core->camera.z_scale = 20;
+	else if (core->camera.z_scale > 100)
+		core->camera.z_scale = 100;
 	if (core->camera.zoom < 0.0001)
 		core->camera.zoom = 0.0001;
 	else if (core->camera.zoom > 30)
