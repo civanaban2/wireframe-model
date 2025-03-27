@@ -16,13 +16,15 @@ SRC = $(DIR_SRC)/fdf.c \
 	$(DIR_SRC)/draw_map.c \
 	$(DIR_SRC)/error.c \
 	$(DIR_SRC)/parser.c \
-	$(DIR_SRC)/hooks.c \
 	$(DIR_SRC)/rotation_matrix.c \
 	$(DIR_SRC)/free_stuff.c \
 	$(DIR_SRC)/line_utils.c \
 	$(DIR_SRC)/hooks_core.c \
 	$(DIR_SRC)/hooks_view.c \
-	$(DIR_SRC)/colorize.c
+	$(DIR_SRC)/colorize.c \
+	$(DIR_SRC)/color_modes.c 
+
+INC = $(DIR_INC)/fdf.h
 
 INCLUDES_H = -I$(DIR_INC) -I$(DIR_LIBFT) -I$(DIR_MINILIBX)
 INCLUDES_LIB = -L$(DIR_LIBFT) -l$(NAME_LIBFT) -L$(DIR_MINILIBX) -l$(NAME_MINILIBX) -lm -lXext -lX11
@@ -45,7 +47,7 @@ $(BUILD_LIBFT):
 $(BUILD_MINILIBX):
 	make -C $(DIR_MINILIBX)
 
-$(OBJ): %.o: %.c
+$(OBJ): %.o: %.c $(INC)
 	$(CC) $(CFLAGS) $(INCLUDES_H) -c $< -o $@ 
 
 clean:

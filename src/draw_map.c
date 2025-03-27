@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:44:10 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 06:51:24 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/27 02:43:36 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_map(t_core core)
 {
-	reset_map(core.img.addr, 1920, 1080);
+	reset_map(core.img.addr, WIDTH, HEIGHT);
 	draw_lines(core);
 	mlx_put_image_to_window(core.screen.mlx,
 		core.screen.win, core.img.img, 0, 0);
@@ -32,5 +32,5 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 void	reset_map(char *img_addr, int width, int height)
 {
-	ft_memset(img_addr, 0x0016161D, width * height * 4);
+	ft_memset(img_addr, 0x16161D, width * height * 4);
 }

@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 05:49:50 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/27 04:05:13 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_img
 
 typedef struct s_camera
 {
-	int		isSphere;
 	int		color_mode;
 	float	x_trans;
 	float	y_trans;
@@ -98,9 +97,10 @@ typedef struct s_core
 int		line_counter(char const *filename);
 int		index_counter(char const *filename);
 int		key_press(int keycode, t_core *core);
-int 	close_window(t_core *core);
+int		close_window(t_core *core);
 int		key_control(int keycode);
-void 	zoom_hook(t_core *core, int keycode);
+int		get_color(t_color color1, t_color color2, int i, int steps);
+void	zoom_hook(t_core *core, int keycode);
 void	arg_check(int argc, char const *filename);
 void	ft_error(char *message);
 void	parse_map(char const *filename, t_map *map);
@@ -113,17 +113,21 @@ void	draw_lines(t_core core);
 void	draw_line(t_core core, t_point point1, t_point point2);
 void	close_hook(t_core *core, int keycode);
 void	reset_hook(t_core *core, int keycode);
-void 	rotation_hook(t_core *core, int keycode);
-void 	translation_hook(t_core *core, int keycode);
+void	rotation_hook(t_core *core, int keycode);
+void	translation_hook(t_core *core, int keycode);
 void	free_split(char **split);
-void	free_points (t_point **points, int height);
-t_point **get_points(t_core core);
+void	free_points(t_point **points, int height);
+void	color_hook(t_core *core, int keycode);
+void	angle_hook(t_core *core, int keycode);
+void	stepper(t_point *point, float x_step, float y_step, char *rgb_step);
+void	make_it_topographic(t_point *point);
+void	make_it_terrain(t_point *point);
+void	make_it_cartoon(t_point *point);
+void	make_it_realistic(t_point *point);
+void	free_palette(t_point *point);
+t_point	**get_points(t_core core);
 t_point	get_point(t_core core, int x, int y);
 t_point	rotate(t_point point, t_camera camera);
-t_point colorize(t_point point, int mode);
-int	get_color(t_color color1, t_color color2, int i, int steps);
-void color_hook(t_core *core, int keycode);
-void	angle_hook(t_core *core, int keycode);
-void	make_it_sphere(t_point *points, int width, int height);
+t_point	colorize(t_point point, int mode);
 
 #endif
