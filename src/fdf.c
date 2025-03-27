@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:59 by cari              #+#    #+#             */
-/*   Updated: 2025/03/25 06:51:38 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/27 02:23:49 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int argc, char const *argv[])
 void	init_core(t_core *core)
 {
 	core->screen.mlx = mlx_init();
-	core->screen.win = mlx_new_window(core->screen.mlx, 1920, 1080, "FDF");
-	core->img.img = mlx_new_image(core->screen.mlx, 1920, 1080);
+	core->screen.win = mlx_new_window(core->screen.mlx, WIDTH, HEIGHT, "FDF");
+	core->img.img = mlx_new_image(core->screen.mlx, WIDTH, HEIGHT);
 	core->img.addr = mlx_get_data_addr(core->img.img,
 			&core->img.bits_per_pixel,
 			&core->img.line_length, &core->img.endian);
@@ -42,5 +42,4 @@ void	init_core(t_core *core)
 	core->camera.y_rotation = M_PI / 180 * 45;
 	core->camera.z_rotation = 0;
 	core->camera.color_mode = 1;
-	core->camera.isSphere = 0;
 }
