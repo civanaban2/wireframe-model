@@ -6,7 +6,7 @@
 /*   By: cari <cari@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:45 by cari              #+#    #+#             */
-/*   Updated: 2025/03/27 04:05:13 by cari             ###   ########.fr       */
+/*   Updated: 2025/03/28 12:31:40 by cari             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define INVALID_ARGS "Invalid number of arguments.\n"
 # define INVALID_FILE "Invalid file.\n"
 # define INVALID_MAP "Invalid map.\n"
+# define INVALID_FORMAT "Invalid format.\n"
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -102,6 +103,7 @@ int		key_control(int keycode);
 int		get_color(t_color color1, t_color color2, int i, int steps);
 void	zoom_hook(t_core *core, int keycode);
 void	arg_check(int argc, char const *filename);
+void	name_control(char const *filename);
 void	ft_error(char *message);
 void	parse_map(char const *filename, t_map *map);
 void	get_data(char const *filename, t_map *map);
