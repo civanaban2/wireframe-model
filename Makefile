@@ -44,7 +44,11 @@ $(BUILD): $(BUILD_LIBFT) $(BUILD_MINILIBX) $(OBJ)
 $(BUILD_LIBFT):
 	make -C $(DIR_LIBFT)
 
-$(BUILD_MINILIBX):
+$(BUILD_MINILIBX): $(DIR_MINILIBX)
+	make -C $(DIR_MINILIBX)
+
+$(DIR_MINILIBX):
+	git clone https://github.com/42paris/minilibx-linux.git $(DIR_MINILIBX)
 	make -C $(DIR_MINILIBX)
 
 $(OBJ): %.o: %.c $(INC)
